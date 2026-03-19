@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 """
 简化版每日新闻摘要 - 云端部署版本
 适合部署到免费云平台如Replit、Railway等
@@ -13,6 +14,10 @@ from datetime import datetime, timedelta
 import os
 import random
 import json
+import sys
+
+# 设置编码
+sys.stdout.reconfigure(encoding='utf-8')
 
 # 配置信息（从环境变量读取）
 EMAIL_USERNAME = os.environ.get('EMAIL_USERNAME', '3389495929@qq.com')
