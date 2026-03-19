@@ -1,0 +1,74 @@
+# OpenAI配置
+openai:
+  api_key: "${OPENAI_API_KEY}"
+  model: "gpt-3.5-turbo"
+  temperature: 0.3
+  max_tokens: 1000
+
+# NewsAPI配置
+newsapi:
+  api_key: "${NEWSAPI_KEY}"
+  enabled: false
+
+# RSS源配置
+rss_sources:
+  # 国内科技媒体
+  - name: "机器之心"
+    url: "https://www.jiqizhixin.com/rss"
+    category: "tech"
+    enabled: true
+    
+  - name: "36氪"
+    url: "https://36kr.com/feed"
+    category: "tech"
+    enabled: true
+    
+  - name: "雷锋网"
+    url: "https://www.leiphone.com/feed"
+    category: "tech"
+    enabled: true
+    
+  - name: "InfoQ"
+    url: "https://www.infoq.cn/feed"
+    category: "tech"
+    enabled: true
+    
+  # 财经新闻
+  - name: "财新网"
+    url: "http://www.caixin.com/webindexindex_news.xml"
+    category: "finance"
+    enabled: true
+    
+  - name: "第一财经"
+    url: "https://www.yicai.com/rss/news.xml"
+    category: "finance"
+    enabled: true
+    
+  # 综合新闻
+  - name: "澎湃新闻"
+    url: "https://www.thepaper.cn/rss/newsDetail.xml"
+    category: "world"
+    enabled: true
+    
+  - name: "观察者网"
+    url: "https://www.guancha.cn/rss.xml"
+    category: "world"
+    enabled: true
+
+# 邮件配置
+email:
+  enabled: true  # 默认启用邮件功能
+  smtp_server: "smtp.qq.com"  # QQ邮箱SMTP服务器
+  smtp_port: 587
+  username: "3389495929@qq.com"  # 直接写入QQ邮箱
+  password: "puikwepvstdadagb"   # 直接写入授权码
+  recipients:
+    - "3389495929@qq.com"  # 你的QQ邮箱地址
+
+# 应用配置
+app:
+  output_dir: "./output"
+  language: "zh-CN"  # zh-CN 或 en-US
+  max_articles_per_source: 10
+  categories: ["tech", "finance", "world", "business"]
+  daily_summary_length: 300  # 字符数限制
