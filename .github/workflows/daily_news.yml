@@ -6,8 +6,31 @@ on:
   workflow_dispatch:
 
 jobs:
+  debug-environment:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+        
+    - name: Install dependencies
+      run: |
+        pip install python-dotenv
+        
+    - name: Environment Debug Test
+      env:
+        EMAIL_USERNAME: ${{ secrets.EMAIL_USERNAME }}
+        EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+        RECIPIENT_EMAIL: ${{ secrets.RECIPIENT_EMAIL }}
+      run: |
+        python test_github_env.py
+  
   send-news:
     runs-on: ubuntu-latest
+    needs: debug-environment
     
     steps:
     - uses: actions/checkout@v3
