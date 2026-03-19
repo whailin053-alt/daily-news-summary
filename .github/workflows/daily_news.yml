@@ -26,6 +26,8 @@ jobs:
       env:
         EMAIL_USERNAME: ${{ secrets.EMAIL_USERNAME }}
         EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+        NETEASE_USER: ${{ secrets.NETEASE_USER }}
+        NETEASE_PASSWORD: ${{ secrets.NETEASE_PASSWORD }}
         RECIPIENT_EMAIL: ${{ secrets.RECIPIENT_EMAIL }}
       run: |
         python test_github_env.py
@@ -50,6 +52,8 @@ jobs:
       env:
         EMAIL_USERNAME: ${{ secrets.EMAIL_USERNAME }}
         EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+        NETEASE_USER: ${{ secrets.NETEASE_USER }}
+        NETEASE_PASSWORD: ${{ secrets.NETEASE_PASSWORD }}
         RECIPIENT_EMAIL: ${{ secrets.RECIPIENT_EMAIL }}
       run: |
-        python daily_news_final.py
+        python netease_email_sender.py
