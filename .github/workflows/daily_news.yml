@@ -56,4 +56,4 @@ jobs:
         NETEASE_PASSWORD: ${{ secrets.NETEASE_PASSWORD }}
         RECIPIENT_EMAIL: ${{ secrets.RECIPIENT_EMAIL }}
       run: |
-        python netease_email_sender.py
+        python netease_email_sender_fixed.py
