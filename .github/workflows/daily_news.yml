@@ -2,8 +2,8 @@ name: Daily News Summary
 
 on:
   schedule:
-    - cron: '0 23 * * *'  # UTC时间23:00 = 北京时间早上7:00
-  workflow_dispatch:  # 允许手动运行
+    - cron: '0 23 * * *'
+  workflow_dispatch:
 
 jobs:
   send-news:
@@ -19,7 +19,7 @@ jobs:
         
     - name: Install dependencies
       run: |
-        pip install feedparser requests
+        pip install feedparser
         
     - name: Run news summary
       env:
@@ -27,4 +27,4 @@ jobs:
         EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
         RECIPIENT_EMAIL: ${{ secrets.RECIPIENT_EMAIL }}
       run: |
-        python cloud_version.py
+        python daily_news_simple.py
