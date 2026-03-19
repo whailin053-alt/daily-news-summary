@@ -1,0 +1,30 @@
+name: Daily News Summary
+
+on:
+  schedule:
+    - cron: '0 23 * * *'  # UTC时间23:00 = 北京时间早上7:00
+  workflow_dispatch:  # 允许手动运行
+
+jobs:
+  send-news:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+        
+    - name: Install dependencies
+      run: |
+        pip install feedparser requests
+        
+    - name: Run news summary
+      env:
+        EMAIL_USERNAME: ${{ secrets.EMAIL_USERNAME }}
+        EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+        RECIPIENT_EMAIL: ${{ secrets.RECIPIENT_EMAIL }}
+      run: |
+        python cloud_version.py
